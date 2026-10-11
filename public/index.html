@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>ClearMind AI - Thoughtful & Private AI Chatbot</title>
+  <meta name="description" content="A professional, developer-grade AI conversational product prioritizing privacy, accuracy, and clear thinking.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Design System Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/markdown.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div id="appContainer" class="app-container">
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- Left Sidebar -->
+    <aside id="sidebar" class="sidebar" aria-label="Conversation Navigation">
+      <div class="sidebar-header">
+        <a href="/" class="brand-link" aria-label="ClearMind AI Home">
+          <span class="brand-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </span>
+          <span>ClearMind AI</span>
+        </a>
+        <div class="sidebar-header-right">
+          <span class="brand-badge">v1.0</span>
+          <button id="sidebarCloseBtn" type="button" class="sidebar-close-btn" aria-label="Close sidebar" title="Close sidebar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-actions">
+        <button id="newChatBtn" type="button" class="btn btn-primary" style="width: 100%;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>New chat</span>
+        </button>
+
+        <div class="search-box-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input id="searchInput" type="search" class="search-input" placeholder="Search conversations (Ctrl+K)" aria-label="Search conversations">
+          <button id="searchClearBtn" type="button" class="search-clear-btn" aria-label="Clear search">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <section class="sidebar-conversations-section">
+        <div class="conversations-label">Recent conversations</div>
+        <div id="conversationListContainer">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <div class="sidebar-footer">
+        <button id="settingsBtn" type="button" class="sidebar-footer-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span>Settings</span>
+        </button>
+        <button id="privacyBtn" type="button" class="sidebar-footer-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Privacy & Security</span>
+        </button>
+        <button id="clearAllBtn" type="button" class="sidebar-footer-btn" style="color: var(--status-error-text);">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span>Clear conversations</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-wrapper" role="main">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="sidebarToggleBtn" type="button" class="sidebar-toggle-btn" aria-label="Toggle sidebar navigation" title="Toggle sidebar (Ctrl+B)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="header-title-container">
+            <span id="currentConvTitle" class="header-conv-title">New Conversation</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div id="statusBadge" class="status-badge demo" title="System Connection Status">
+            <span id="statusDot" class="status-dot"></span>
+            <span id="statusText" class="status-text">Connecting...</span>
+          </div>
+          <button id="headerThemeBtn" type="button" class="header-action-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+            <!-- Rendered by JS -->
+          </button>
+          <button id="headerNewChatBtn" type="button" class="btn btn-secondary header-new-btn" title="Start new conversation">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span class="header-new-text">New</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Message / Welcome Viewport -->
+      <section class="chat-scroll-area" aria-label="Conversation messages">
+        <div id="chatContentContainer" class="chat-content-container">
+          <!-- Populated dynamically: Welcome screen or message nodes -->
+        </div>
+      </section>
+
+      <!-- Message Composer (Pinned Bottom) -->
+      <footer class="composer-wrapper">
+        <div class="composer-container">
+          <div class="composer-box">
+            <label for="composerTextarea" class="sr-only">Ask a question</label>
+            <textarea
+              id="composerTextarea"
+              class="composer-textarea"
+              placeholder="Ask a question..."
+              rows="1"
+              maxlength="16000"
+              aria-label="Message prompt input"
+            ></textarea>
+            <div class="composer-actions">
+              <button id="composerSendBtn" type="button" class="btn btn-primary btn-icon-only" title="Send message" aria-label="Send message">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="composer-footer-info">
+            <span class="composer-hint">Shift + Enter for new line • Enter to send</span>
+            <span class="composer-disclaimer">ClearMind AI • Local privacy mode • <a href="/privacy" target="_blank">Privacy</a> • <a href="/terms" target="_blank">Terms</a></span>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Modal: Settings -->
+    <div id="settingsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2 id="settingsModalTitle" class="modal-title">Settings</h2>
+          <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close settings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <form id="settingsForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="themeSelect" class="form-label">Theme Appearance</label>
+              <select id="themeSelect" class="form-select">
+                <option value="light">Warm Light (Alabaster & Charcoal)</option>
+                <option value="dark">Refined Dark (Slate Neutral)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between;">
+                <label for="tempInput" class="form-label">Sampling Temperature</label>
+                <span id="tempValue" style="font-family: var(--font-mono); font-size: 12px;">0.7</span>
+              </div>
+              <input id="tempInput" type="range" min="0.0" max="1.5" step="0.1" value="0.7">
+              <span class="form-helper">Lower values produce focused responses; higher values introduce greater variety.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="systemPromptInput" class="form-label">Custom System Instructions</label>
+              <textarea id="systemPromptInput" class="form-input" rows="3" placeholder="You are ChatGPT, a large language model trained by OpenAI..."></textarea>
+              <span class="form-helper">Configures persona, tone, output constraints, and conversational style.</span>
+            </div>
+
+            <div class="form-group" style="padding-top: 10px; border-top: 1px solid var(--border-light);">
+              <label for="providerSelect" class="form-label">AI Model Provider</label>
+              <select id="providerSelect" class="form-select">
+                <option value="gemini">Google Gemini (Recommended — Free API key via AI Studio)</option>
+                <option value="openai">OpenAI (ChatGPT / GPT-4o-mini)</option>
+                <option value="groq">Groq (Llama-3.3-70b)</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="apiKeyGroup">
+              <label for="apiKeyInput" class="form-label">API Key</label>
+              <input id="apiKeyInput" type="password" class="form-input" placeholder="Paste your API key (e.g. AIzaSy... or sk-...)">
+              <span class="form-helper" id="apiKeyHelper">
+                Get a free Gemini API key in seconds at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Google AI Studio</a>.
+              </span>
+            </div>
+
+            <div class="form-group" style="padding-top: 8px; border-top: 1px solid var(--border-light);">
+              <label class="form-label">Data Portability</label>
+              <button id="exportChatsBtn" type="button" class="btn btn-secondary" style="width: fit-content;">
+                Export conversations as JSON
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close-trigger">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Privacy & Security Overview -->
+    <div id="privacyModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2 id="privacyModalTitle" class="modal-title">Privacy & Security Architecture</h2>
+          <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Browser-Specific Storage:</strong> By default, all conversation titles and message histories are persisted locally in your browser’s isolated localStorage. They are never sent to external tracking servers or third-party analytics.</p>
+          <p><strong>Server-Side Secret Management:</strong> AI provider API keys (Google Gemini / OpenAI) are secured exclusively inside server-side environment variables and are never transmitted to browser clients.</p>
+          <p><strong>Input Sanitization:</strong> All user inputs and assistant markdown streams undergo strict sanitization with DOMPurify to neutralize script injection risks (XSS).</p>
+          <p><strong>Data Minimization:</strong> No user cookies, tracking pixels, or identifying telemetries are collected.</p>
+          <p>For complete legal and technical terms, review our dedicated <a href="/privacy" target="_blank">Privacy Policy</a> and <a href="/terms" target="_blank">Terms of Service</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-close-trigger">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Rename Conversation -->
+    <div id="renameModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="renameModalTitle">
+      <div class="modal-card" style="max-width: 420px;">
+        <div class="modal-header">
+          <h2 id="renameModalTitle" class="modal-title">Rename Conversation</h2>
+          <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <form id="renameForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="renameInput" class="form-label">Conversation Title</label>
+              <input id="renameInput" type="text" class="form-input" maxlength="100" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close-trigger">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save title</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Confirm Action -->
+    <div id="confirmModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-card" style="max-width: 440px;">
+        <div class="modal-header">
+          <h2 id="confirmTitle" class="modal-title">Confirm Action</h2>
+          <button type="button" class="modal-close-btn modal-close-trigger" aria-label="Close modal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="confirmMessage" style="color: var(--text-secondary);"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-close-trigger">Cancel</button>
+          <button id="confirmAcceptBtn" type="button" class="btn btn-danger">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sanitization Vendor Script -->
+  <script src="/vendor/purify.min.js"></script>
+
+  <!-- ES Module Application Bootstrap -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - ClearMind AI</title>
+  <meta name="description" content="Privacy Policy for ClearMind AI. Details on data collection, AI processing, storage, and deletion rights.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/markdown.css">
+  <style>
+    .legal-container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 48px 24px 80px 24px;
+      line-height: var(--line-height-relaxed);
+    }
+    @media (max-width: 768px) {
+      .legal-container {
+        padding: 24px 16px 48px 16px;
+      }
+      .legal-title {
+        font-size: 22px !important;
+      }
+    }
+    .legal-header {
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 24px;
+    }
+    .legal-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--font-size-sm);
+      margin-bottom: 16px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .legal-nav-back:hover {
+      text-decoration: underline;
+    }
+    .legal-title {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .legal-meta {
+      font-size: var(--font-size-xs);
+      color: var(--text-muted);
+    }
+    .legal-section {
+      margin-bottom: 32px;
+    }
+    .legal-section h2 {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    .legal-section p, .legal-section ul {
+      margin-bottom: 14px;
+      color: var(--text-secondary);
+      font-size: var(--font-size-base);
+    }
+    .legal-section ul {
+      padding-left: 20px;
+    }
+    .legal-section li {
+      margin-bottom: 6px;
+    }
+    .legal-notice-box {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      margin: 20px 0;
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <main class="legal-container">
+    <header class="legal-header">
+      <a href="/" class="legal-nav-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Back to ClearMind AI</span>
+      </a>
+      <h1 class="legal-title">Privacy Policy</h1>
+      <div class="legal-meta">Last updated: October 2026 • Effective upon application launch</div>
+    </header>
+
+    <div class="legal-notice-box">
+      <strong>Notice for Website Operator:</strong> This policy accurately describes the architecture and data handling of ClearMind AI. Before public commercial deployment, complete marked fields <code>[Insert Organization / Contact Details]</code> with your entity information and conduct legal review.
+    </div>
+
+    <section class="legal-section">
+      <h2>1. Introduction & Privacy Philosophy</h2>
+      <p>
+        ClearMind AI ("we", "our", or "the Service") is built with a privacy-first architectural approach. We believe artificial intelligence tools should empower productivity without invasive surveillance or unnecessary personal data aggregation.
+      </p>
+      <p>
+        This Privacy Policy outlines what information is processed when you access ClearMind AI, how chat prompts are handled by backend AI providers, where conversation records are stored, and how you retain full control over your data.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Information Collected</h2>
+      <p>We practice strict data minimization. Specifically:</p>
+      <ul>
+        <li><strong>Account Data:</strong> If running in guest or local mode, no account registration, names, email addresses, or phone numbers are requested or recorded.</li>
+        <li><strong>Chat Messages:</strong> The text prompts you submit and the generated assistant replies.</li>
+        <li><strong>Network & Operational Logs:</strong> Standard web server connection metadata (IP addresses, request timestamps, user-agent headers) strictly retained in volatile memory or transient logs for rate-limiting enforcement and security protection against abuse.</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. How Messages Are Processed & AI Provider Handling</h2>
+      <p>
+        To generate contextual answers, your messages are transmitted securely through HTTPS to our backend server and forwarded to the configured AI foundation model provider:
+      </p>
+      <ul>
+        <li><strong>Google Gemini API</strong> (Google LLC): Subject to Google's API Terms and Developer Policies. Google does not use customer data submitted via paid enterprise API keys to train its models.</li>
+        <li><strong>OpenAI API / Groq API:</strong> If configured by the deployment administrator, requests are processed under the respective provider’s enterprise API data privacy agreements.</li>
+        <li><strong>Local Heuristic / Demo Engine:</strong> When running in Demo mode, messages are evaluated entirely on the local server without sending any data over external network boundaries.</li>
+      </ul>
+      <p>
+        We do not sell, rent, or monetize your prompt data or conversation histories to third-party data brokers or advertising networks.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Storage, Retention & Deletion Rights</h2>
+      <p>
+        <strong>Browser-Specific Storage:</strong> By default, your chat history is stored locally within your web browser using HTML5 <code>localStorage</code>. This means your conversation history never resides in our persistent backend database unless you explicitly sync or back up your profile.
+      </p>
+      <p>
+        <strong>Immediate User Deletion:</strong> You retain unilateral control over your conversation history. You can delete individual conversations using the trash icon in the sidebar or wipe all conversations instantly by selecting "Clear conversations". Clearing browser cookies and website storage also permanently removes all local records.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Cookies & Tracking Technologies</h2>
+      <p>
+        ClearMind AI does <strong>not</strong> use third-party tracking cookies, Google Analytics, social media widgets, or advertising trackers. Local browser storage is utilized strictly for essential technical state: preserving your active conversation, theme preference, and sampling settings.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Security Protections</h2>
+      <p>
+        We apply defensive engineering practices to safeguard application traffic and user interaction:
+      </p>
+      <ul>
+        <li>Strict Content Security Policy (CSP) headers via Helmet to prevent cross-site scripting (XSS).</li>
+        <li>DOM sanitization with DOMPurify prior to rendering any assistant markdown response.</li>
+        <li>Server-side secret isolation: API keys are strictly loaded in server environment variables and never exposed to the client.</li>
+        <li>Rate limiting per client IP to mitigate denial-of-service attempts.</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. Contact & Data Inquiries</h2>
+      <p>
+        For inquiries regarding this Privacy Policy, data handling practices, or technical security reports, contact:
+      </p>
+      <p>
+        <strong>ClearMind AI Project Administrator</strong><br>
+        Email: <code>privacy@[Insert-Domain-Or-Organization.com]</code><br>
+        Operator: <code>[Insert Organization Name / Primary Maintainer]</code>
+      </p>
+    </section>
+  </main>
+</body>
+</html>
